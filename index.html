@@ -3,634 +3,711 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Burning Point USA — By Us. For Us. On Fire.</title>
-<meta name="description" content="Burning Point USA — Black American multimedia news and culture platform. Investigative journalism, video, podcasts, and community voices from Phoenix and beyond." />
+<title>Burning Point USA — Civic Intelligence Platform</title>
+<meta name="description" content="Burning Point USA — An AI-powered civic intelligence platform for critical thinking, historical literacy, and community leadership. By us. For us." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --fire:       #C8401A;
-    --fire-deep:  #8B2B0F;
-    --fire-glow:  #E8580A;
-    --gold:       #D4A035;
-    --gold-light: #F0C060;
-    --ink:        #0A0703;
-    --ink-mid:    #111008;
-    --ink-soft:   #1A1208;
-    --ink-muted:  #2A1A08;
-    --paper:      #F2EAD8;
-    --paper-mid:  #E8D8BE;
-    --text-warm:  #C8B890;
-    --text-muted: #8A6840;
-    --text-dim:   #5A3A18;
-    --text-ghost: #3A2210;
-    --border:     #2A1A08;
-    --border-soft:#1A1005;
-    --ff-serif:   'Playfair Display', Georgia, serif;
-    --ff-sans:    'Inter', system-ui, sans-serif;
-    --ff-mono:    'Roboto Mono', monospace;
-    --r-sm: 6px;
-    --r-md: 10px;
-    --r-lg: 14px;
-  }
+:root {
+  --fire:        #C8401A;
+  --fire-deep:   #8B2B0F;
+  --fire-bright: #E8580A;
+  --gold:        #C8941A;
+  --gold-light:  #E8B840;
+  --ink:         #080604;
+  --ink-mid:     #0E0A06;
+  --ink-soft:    #161008;
+  --ink-raised:  #1E1610;
+  --ink-card:    #1A1208;
+  --paper:       #F5EFE2;
+  --paper-dim:   #E8DCC8;
+  --text-bright: #EEE0C0;
+  --text-warm:   #C8B080;
+  --text-mid:    #907050;
+  --text-dim:    #604830;
+  --text-ghost:  #382818;
+  --border-hard: #281808;
+  --border-soft: #160E04;
+  --accent-teal: #1A8060;
+  --accent-blue: #2060A8;
+  --ff-serif:    'Playfair Display', Georgia, serif;
+  --ff-sans:     'Inter', system-ui, sans-serif;
+  --ff-mono:     'Roboto Mono', monospace;
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.6);
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+}
 
-  html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--ink);
-    color: var(--text-warm);
-    font-family: var(--ff-sans);
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+body {
+  background: var(--ink);
+  color: var(--text-warm);
+  font-family: var(--ff-sans);
+  font-size: 14px;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-  a { color: inherit; text-decoration: none; }
-  button { font-family: var(--ff-sans); cursor: pointer; }
-  img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--ff-sans); cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
 
-  /* ── TOPBAR ── */
-  .topbar {
-    background: #06040200;
-    border-bottom: 0.5px solid var(--border-soft);
-    padding: 6px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .topbar-right { display: flex; gap: 20px; }
-  .topbar-right a { transition: color 0.15s; }
-  .topbar-right a:hover { color: var(--fire); }
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 7px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: var(--text-dim);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+.topbar-date { font-family: var(--ff-mono); }
+.topbar-right { display: flex; gap: 24px; }
+.topbar-right a { transition: color 0.15s; }
+.topbar-right a:hover { color: var(--gold-light); }
 
-  /* ── NAVBAR ── */
-  .navbar {
-    background: var(--ink-mid);
-    border-bottom: 0.5px solid var(--border);
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+/* ── NAVBAR ── */
+.navbar {
+  background: rgba(14, 10, 6, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-hard);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
 
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .brand-icon {
-    width: 38px; height: 38px;
-    background: var(--fire);
-    border-radius: var(--r-sm);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-  }
-  .brand-name {
-    font-family: var(--ff-serif);
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-warm);
-    white-space: nowrap;
-  }
-  .brand-name span { color: var(--fire); }
-  .brand-tagline {
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 1px;
-  }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--fire-bright), var(--fire-deep));
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(200,64,26,0.4);
+}
+.brand-text {}
+.brand-name {
+  font-family: var(--ff-serif);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+}
+.brand-name span { color: var(--fire-bright); }
+.brand-sub {
+  font-size: 9.5px;
+  color: var(--text-dim);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
 
-  .nav-links { display: flex; gap: 2px; }
-  .nav-link {
-    font-size: 12px;
-    padding: 6px 13px;
-    border-radius: 20px;
-    border: 0.5px solid transparent;
-    background: transparent;
-    color: var(--text-muted);
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-  .nav-link:hover { color: var(--text-warm); border-color: var(--border); }
-  .nav-link.active { background: var(--fire); color: #fff; border-color: var(--fire); }
+.nav-links { display: flex; gap: 2px; align-items: center; }
+.nav-link {
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 7px 15px;
+  border-radius: 24px;
+  border: 1px solid transparent;
+  color: var(--text-mid);
+  transition: all 0.15s;
+  letter-spacing: 0.2px;
+}
+.nav-link:hover { color: var(--text-warm); background: rgba(255,255,255,0.04); }
+.nav-link.active {
+  background: var(--fire);
+  color: #fff;
+  border-color: var(--fire-bright);
+  box-shadow: 0 2px 10px rgba(200,64,26,0.35);
+}
 
-  .nav-right { display: flex; align-items: center; gap: 10px; }
-  .search-box {
-    display: flex; align-items: center; gap: 7px;
-    background: var(--ink-soft);
-    border: 0.5px solid var(--border);
-    border-radius: 20px;
-    padding: 6px 14px;
-  }
-  .search-box input {
-    background: transparent; border: none; outline: none;
-    font-size: 12px; color: var(--text-warm); width: 130px;
-    font-family: var(--ff-sans);
-  }
-  .search-box input::placeholder { color: var(--text-ghost); }
-  .search-icon { color: var(--text-dim); font-size: 15px; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.search-wrap {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--ink-soft);
+  border: 1px solid var(--border-hard);
+  border-radius: 24px;
+  padding: 7px 16px;
+  transition: border-color 0.15s;
+}
+.search-wrap:focus-within { border-color: var(--fire); }
+.search-wrap input {
+  background: transparent; border: none; outline: none;
+  font-size: 12px; color: var(--text-warm); width: 140px;
+  font-family: var(--ff-sans);
+}
+.search-wrap input::placeholder { color: var(--text-ghost); }
+.search-icon { color: var(--text-dim); font-size: 13px; }
 
-  .avatar {
-    width: 32px; height: 32px; border-radius: 50%;
-    background: var(--fire);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 500; color: #fff;
-    cursor: pointer; flex-shrink: 0;
-  }
+.avatar-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--fire), var(--fire-deep));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: #fff;
+  box-shadow: 0 2px 8px rgba(200,64,26,0.3);
+  cursor: pointer;
+}
 
-  /* ── HUB BAR ── */
-  .hub-bar {
-    background: var(--ink-mid);
-    border-bottom: 0.5px solid var(--border-soft);
-    padding: 8px 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .hub-bar::-webkit-scrollbar { display: none; }
+/* ── HUB BAR ── */
+.hub-bar {
+  background: var(--ink-mid);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 44px;
+}
+.hub-bar::-webkit-scrollbar { display: none; }
 
-  .hub-pill {
-    display: flex; align-items: center; gap: 6px;
-    padding: 5px 14px;
-    border-radius: 20px;
-    border: 0.5px solid var(--border);
-    background: transparent;
-    white-space: nowrap;
-    transition: all 0.2s;
-    font-size: 12px;
-  }
-  .hub-pill.live {
-    border-color: var(--fire);
-    background: rgba(200,64,26,0.08);
-    color: var(--text-warm);
-  }
-  .hub-pill.live .hub-icon { color: var(--fire); }
-  .hub-pill.live .hub-badge {
-    background: var(--fire);
-    color: #fff;
-    font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 10px; margin-left: 2px;
-  }
-  .hub-pill.soon {
-    color: var(--text-ghost);
-    cursor: pointer;
-  }
-  .hub-pill.soon:hover { border-color: var(--text-ghost); color: var(--text-dim); }
-  .hub-pill.soon .hub-badge {
-    background: var(--ink-soft);
-    color: var(--text-ghost);
-    font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 10px; margin-left: 2px;
-    border: 0.5px solid var(--border);
-  }
+.hub-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 13px;
+  border-radius: 20px;
+  border: 1px solid var(--border-hard);
+  background: transparent;
+  white-space: nowrap;
+  font-size: 11.5px;
+  transition: all 0.2s;
+  cursor: pointer;
+  color: var(--text-dim);
+}
+.hub-chip:hover { border-color: var(--text-ghost); color: var(--text-mid); }
+.hub-chip.live {
+  border-color: rgba(200,64,26,0.5);
+  background: rgba(200,64,26,0.07);
+  color: var(--text-warm);
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--fire-bright);
+  box-shadow: 0 0 6px var(--fire-bright);
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.chip-badge {
+  font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 10px; margin-left: 1px;
+}
+.hub-chip.live .chip-badge { background: var(--fire); color: #fff; }
+.hub-chip.soon .chip-badge { background: var(--border-hard); color: var(--text-ghost); border: 1px solid var(--border-soft); }
 
-  /* ── TICKER ── */
-  .ticker {
-    background: var(--fire);
-    padding: 7px 24px;
-    display: flex; align-items: center; gap: 12px;
-    overflow: hidden;
-  }
-  .ticker-tag {
-    font-size: 10px; font-weight: 500;
-    letter-spacing: 2px; text-transform: uppercase;
-    background: rgba(0,0,0,0.2);
-    color: #ffe8d0;
-    padding: 2px 9px; border-radius: 4px;
-    white-space: nowrap;
-  }
-  .ticker-track { flex: 1; overflow: hidden; white-space: nowrap; }
-  .ticker-text {
-    display: inline-block;
-    font-size: 12px; color: #ffe8d0; letter-spacing: 0.3px;
-    animation: ticker 32s linear infinite;
-  }
-  @keyframes ticker { from { transform: translateX(100%); } to { transform: translateX(-260%); } }
+/* ── TICKER ── */
+.ticker {
+  background: linear-gradient(90deg, var(--fire-deep), var(--fire), var(--fire-deep));
+  padding: 8px 32px;
+  display: flex; align-items: center; gap: 14px;
+  overflow: hidden;
+}
+.ticker-label {
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,230,200,0.9);
+  padding: 3px 10px; border-radius: var(--r-xs);
+  white-space: nowrap; flex-shrink: 0;
+}
+.ticker-track { flex: 1; overflow: hidden; white-space: nowrap; }
+.ticker-inner {
+  display: inline-block;
+  font-size: 12px; color: rgba(255,230,200,0.85); letter-spacing: 0.3px;
+  animation: scroll-ticker 38s linear infinite;
+}
+@keyframes scroll-ticker { from{transform:translateX(100%);} to{transform:translateX(-280%);} }
 
-  /* ── LAYOUT ── */
-  .layout {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 24px 24px 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 24px;
-    align-items: start;
-  }
+/* ── PLATFORM INTRO STRIP ── */
+.platform-intro {
+  background: var(--ink-soft);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.pi-stat { text-align: center; flex-shrink: 0; }
+.pi-stat-num {
+  font-family: var(--ff-serif);
+  font-size: 22px; font-weight: 700;
+  color: var(--fire-bright);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.pi-stat-label { font-size: 9.5px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; }
+.pi-divider { width: 1px; height: 36px; background: var(--border-hard); flex-shrink: 0; }
+.pi-mission {
+  flex: 1;
+  font-family: var(--ff-serif);
+  font-size: 14px; font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.pi-mission strong { color: var(--text-warm); font-style: normal; font-weight: 600; }
+.pi-cta {
+  flex-shrink: 0;
+  background: var(--fire);
+  color: #fff;
+  font-size: 12px; font-weight: 500;
+  padding: 10px 22px;
+  border-radius: var(--r-sm);
+  letter-spacing: 0.3px;
+  transition: background 0.15s;
+  box-shadow: 0 2px 10px rgba(200,64,26,0.3);
+}
+.pi-cta:hover { background: var(--fire-bright); }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--ink-soft);
-    border: 0.5px solid var(--border);
-    border-radius: var(--r-lg);
-    overflow: hidden;
-    margin-bottom: 24px;
-    display: flex;
-    min-height: 220px;
-  }
-  .hero-content {
-    flex: 1;
-    padding: 28px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: var(--fire);
-    color: #ffe8d0;
-    font-size: 10px; font-weight: 500;
-    padding: 3px 11px; border-radius: 20px;
-    letter-spacing: 1px; text-transform: uppercase;
-    margin-bottom: 12px; width: fit-content;
-  }
-  .hero-title {
-    font-family: var(--ff-serif);
-    font-size: 22px; font-weight: 700;
-    color: var(--paper);
-    line-height: 1.3;
-    margin-bottom: 12px;
-    max-width: 520px;
-  }
-  .hero-meta {
-    display: flex; gap: 16px;
-    font-size: 11px; color: var(--text-dim);
-  }
-  .hero-meta span { display: flex; align-items: center; gap: 4px; }
-  .hero-visual {
-    width: 200px; flex-shrink: 0;
-    background: #150a02;
-    display: flex; align-items: center; justify-content: center;
-    border-left: 0.5px solid var(--border);
-  }
-  .hero-flame { text-align: center; }
-  .flame-icon { font-size: 56px; color: var(--gold); line-height: 1; margin-bottom: 8px; }
-  .flame-label { font-size: 10px; color: var(--text-dim); letter-spacing: 3px; text-transform: uppercase; }
+/* ── MAIN LAYOUT ── */
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 32px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 316px;
+  gap: 28px;
+  align-items: start;
+}
 
-  /* ── SECTION HEADER ── */
-  .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 0.5px solid var(--border-soft);
-  }
-  .section-title {
-    font-size: 10px; font-weight: 500;
-    color: var(--text-dim);
-    letter-spacing: 3px; text-transform: uppercase;
-  }
-  .view-all {
-    font-size: 11px; color: var(--fire);
-    background: none; border: none;
-    transition: opacity 0.15s;
-  }
-  .view-all:hover { opacity: 0.7; }
+/* ── HERO ── */
+.hero {
+  background: var(--ink-card);
+  border: 1px solid var(--border-hard);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  min-height: 240px;
+  box-shadow: var(--shadow-md);
+}
+.hero-body {
+  padding: 32px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(200,64,26,0.15);
+  border: 1px solid rgba(200,64,26,0.3);
+  color: var(--fire-bright);
+  font-size: 10px; font-weight: 600;
+  padding: 4px 12px; border-radius: 20px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 14px; width: fit-content;
+}
+.hero-title {
+  font-family: var(--ff-serif);
+  font-size: 24px; font-weight: 700;
+  color: var(--paper);
+  line-height: 1.28;
+  margin-bottom: 14px;
+  max-width: 500px;
+}
+.hero-meta {
+  display: flex; gap: 18px;
+  font-size: 11px; color: var(--text-dim);
+  font-family: var(--ff-mono);
+}
+.hero-visual {
+  background: linear-gradient(160deg, #120600, #080300);
+  display: flex; align-items: center; justify-content: center;
+  border-left: 1px solid var(--border-soft);
+}
+.flame-glyph { text-align: center; }
+.flame-glyph .icon { font-size: 52px; line-height: 1; filter: drop-shadow(0 0 12px rgba(232,88,10,0.5)); }
+.flame-glyph .label { font-size: 9px; color: var(--text-ghost); letter-spacing: 3px; text-transform: uppercase; margin-top: 8px; }
 
-  /* ── CARDS ── */
-  .card-list { display: flex; flex-direction: column; }
-  .card {
-    display: flex; gap: 14px;
-    padding: 13px 0;
-    border-bottom: 0.5px solid var(--border-soft);
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-  .card:last-child { border-bottom: none; }
-  .card:hover { opacity: 0.75; }
+/* ── SECTION HEADER ── */
+.sec-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.sec-label {
+  font-size: 10px; font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 3px; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+.sec-label::before {
+  content: '';
+  display: inline-block;
+  width: 2px; height: 12px;
+  background: var(--fire);
+  border-radius: 2px;
+}
+.sec-more {
+  font-size: 11px; color: var(--fire);
+  font-weight: 500; letter-spacing: 0.3px;
+  transition: opacity 0.15s;
+}
+.sec-more:hover { opacity: 0.7; }
 
-  .card-thumb {
-    width: 72px; height: 54px;
-    border-radius: var(--r-sm);
-    background: var(--ink-soft);
-    border: 0.5px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 22px;
-  }
-  .card-thumb.fire { background: #180800; }
-  .card-thumb.fire span { color: var(--fire); }
-  .card-thumb.gold span { color: var(--gold); }
-  .card-thumb.teal span { color: #1D9E75; }
-  .card-thumb.blue span { color: #378ADD; }
-  .card-thumb.dim span { color: var(--text-ghost); }
+/* ── ARTICLE CARDS ── */
+.feed { display: flex; flex-direction: column; margin-bottom: 32px; }
 
-  .card-body { flex: 1; min-width: 0; }
-  .card-cat {
-    font-size: 10px; font-weight: 500;
-    color: var(--fire);
-    letter-spacing: 1px; text-transform: uppercase;
-    margin-bottom: 3px;
-  }
-  .card-title {
-    font-family: var(--ff-serif);
-    font-size: 13px; font-weight: 500;
-    color: var(--text-warm);
-    line-height: 1.4;
-    margin-bottom: 5px;
-  }
-  .card-meta {
-    font-size: 11px; color: var(--text-ghost);
-    display: flex; gap: 10px; align-items: center;
-  }
+.article {
+  display: flex; gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-soft);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.article:first-child { padding-top: 0; }
+.article:last-child { border-bottom: none; }
+.article:hover { opacity: 0.7; }
 
-  .feed-block { margin-bottom: 28px; }
+.art-thumb {
+  width: 76px; height: 58px;
+  border-radius: var(--r-sm);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  border: 1px solid var(--border-hard);
+}
+.art-thumb.t-fire { background: #130600; }
+.art-thumb.t-gold { background: #110800; }
+.art-thumb.t-teal { background: #041008; }
+.art-thumb.t-blue { background: #04080F; }
+.art-thumb.t-neutral { background: var(--ink-soft); }
 
-  /* ── SIDEBAR ── */
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+.art-body { flex: 1; min-width: 0; }
+.art-cat {
+  font-size: 10px; font-weight: 600;
+  color: var(--fire);
+  letter-spacing: 1.2px; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.art-title {
+  font-family: var(--ff-serif);
+  font-size: 13.5px; font-weight: 600;
+  color: var(--text-warm);
+  line-height: 1.38;
+  margin-bottom: 6px;
+}
+.art-meta {
+  font-size: 10.5px; color: var(--text-ghost);
+  display: flex; gap: 12px;
+  font-family: var(--ff-mono);
+}
 
-  .sidebar-card {
-    background: var(--ink-soft);
-    border: 0.5px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 16px;
-  }
+/* ── DOSIMETRIST STORY SECTION ── */
+.story-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px 32px;
+}
+.story-card {
+  background: linear-gradient(135deg, #0C0400 0%, #110600 50%, #0A0400 100%);
+  border: 1px solid rgba(139,43,15,0.4);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(232,88,10,0.08);
+  position: relative;
+}
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,64,26,0.5), transparent);
+}
+.story-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0;
+}
+.story-body { padding: 36px 40px; }
+.story-genre {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--fire-bright);
+  margin-bottom: 18px;
+}
+.story-genre-sep { color: var(--text-ghost); }
+.story-inspired {
+  font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-hard);
+  padding: 3px 10px; border-radius: var(--r-xs);
+}
+.story-title {
+  font-family: var(--ff-serif);
+  font-size: 36px; font-weight: 700;
+  color: var(--paper);
+  line-height: 1.12;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+.story-subtitle {
+  font-family: var(--ff-serif);
+  font-size: 17px; font-style: italic;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.story-desc {
+  font-size: 13px; color: var(--text-mid); line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.story-note {
+  font-size: 11px; color: var(--text-dim);
+  background: rgba(255,255,255,0.02);
+  border-left: 2px solid rgba(200,64,26,0.3);
+  padding: 10px 14px;
+  border-radius: 0 var(--r-xs) var(--r-xs) 0;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 460px;
+}
+.story-note strong { color: var(--text-mid); }
+.story-btns { display: flex; gap: 12px; }
+.btn-primary {
+  background: var(--fire);
+  color: #fff; font-size: 12.5px; font-weight: 500;
+  padding: 10px 24px; border-radius: var(--r-sm);
+  letter-spacing: 0.3px;
+  transition: all 0.15s;
+  box-shadow: 0 2px 12px rgba(200,64,26,0.35);
+}
+.btn-primary:hover { background: var(--fire-bright); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--text-mid);
+  border: 1px solid var(--border-hard);
+  padding: 10px 22px; border-radius: var(--r-sm);
+  font-size: 12.5px;
+  transition: all 0.15s;
+}
+.btn-ghost:hover { border-color: var(--fire); color: var(--fire); }
 
-  .trending-item {
-    display: flex; gap: 12px;
-    padding: 10px 0;
-    border-bottom: 0.5px solid var(--border-soft);
-    cursor: pointer;
-  }
-  .trending-item:last-child { border-bottom: none; }
-  .trending-item:hover .ti-title { color: var(--fire); }
-  .ti-num {
-    font-family: var(--ff-serif);
-    font-size: 20px; font-weight: 700;
-    color: var(--border);
-    line-height: 1; min-width: 22px;
-  }
-  .ti-title {
-    font-size: 12px; font-weight: 500;
-    color: var(--text-muted);
-    line-height: 1.35;
-    margin-bottom: 3px;
-    transition: color 0.15s;
-  }
-  .ti-meta { font-size: 10px; color: var(--text-ghost); }
+.story-aside {
+  padding: 36px 36px 36px 0;
+  display: flex; align-items: center;
+}
+.story-pullquote {
+  font-family: var(--ff-serif);
+  font-size: 13.5px; font-style: italic;
+  color: var(--text-dim);
+  line-height: 1.75;
+  max-width: 190px;
+  border-left: 2px solid rgba(139,43,15,0.5);
+  padding-left: 18px;
+}
 
-  /* ── HUB GRID ── */
-  .hub-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .hub-tile {
-    background: var(--ink-mid);
-    border: 0.5px solid var(--border-soft);
-    border-radius: var(--r-md);
-    padding: 12px 10px;
-    cursor: pointer;
-    transition: border-color 0.15s;
-  }
-  .hub-tile:hover { border-color: var(--border); }
-  .hub-tile.live-tile { border-color: var(--fire); background: rgba(200,64,26,0.06); }
-  .hub-tile-icon { font-size: 20px; margin-bottom: 6px; display: block; }
-  .hub-tile.live-tile .hub-tile-icon { color: var(--fire); }
-  .hub-tile.soon-tile .hub-tile-icon { color: var(--border); }
-  .hub-tile-name { font-size: 12px; font-weight: 500; color: var(--text-muted); margin-bottom: 2px; }
-  .hub-tile.soon-tile .hub-tile-name { color: var(--text-ghost); }
-  .hub-tile-status { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
-  .hub-tile.live-tile .hub-tile-status { color: var(--fire); }
-  .hub-tile.soon-tile .hub-tile-status { color: var(--border); }
+/* ── SIDEBAR ── */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
 
-  /* ── NOTIFY FORM ── */
-  .notify-form { display: flex; flex-direction: column; gap: 8px; }
-  .notify-title { font-size: 13px; font-weight: 500; color: var(--text-warm); margin-bottom: 2px; }
-  .notify-sub { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
-  .notify-select, .notify-input {
-    width: 100%;
-    background: var(--ink-mid);
-    border: 0.5px solid var(--border);
-    border-radius: var(--r-sm);
-    padding: 8px 11px;
-    font-size: 12px; color: var(--text-warm);
-    font-family: var(--ff-sans);
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .notify-select:focus, .notify-input:focus { border-color: var(--fire); }
-  .notify-input::placeholder { color: var(--text-ghost); }
-  .notify-btn {
-    background: var(--fire);
-    border: none;
-    border-radius: var(--r-sm);
-    padding: 9px;
-    font-size: 12px; color: #ffe8d0;
-    font-weight: 500; letter-spacing: 0.5px;
-    transition: background 0.15s;
-  }
-  .notify-btn:hover { background: var(--fire-deep); }
-  .toast {
-    background: var(--ink-mid);
-    border-left: 2px solid var(--fire);
-    border-radius: 0 var(--r-sm) var(--r-sm) 0;
-    padding: 10px 12px;
-    font-size: 11px; color: var(--gold);
-    line-height: 1.5;
-    display: none;
-  }
-  .toast.show { display: block; }
+.s-card {
+  background: var(--ink-card);
+  border: 1px solid var(--border-hard);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
 
-  /* ── ABOUT STRIP ── */
-  .about-strip {
-    max-width: 1160px;
-    margin: 28px auto 0;
-    padding: 0 24px;
-  }
-  .about-inner {
-    background: var(--ink-soft);
-    border: 0.5px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 24px 28px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-  }
-  .about-block-title {
-    font-size: 10px; font-weight: 500;
-    color: var(--fire);
-    letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .about-block-text { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+/* Trending */
+.trending-row {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border-soft);
+  cursor: pointer; transition: opacity 0.15s;
+}
+.trending-row:first-of-type { padding-top: 0; }
+.trending-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+.trending-row:hover { opacity: 0.7; }
+.tr-num {
+  font-family: var(--ff-serif);
+  font-size: 22px; font-weight: 700;
+  color: var(--border-hard);
+  line-height: 1; min-width: 24px; padding-top: 1px;
+}
+.tr-title {
+  font-size: 12px; font-weight: 500;
+  color: var(--text-mid); line-height: 1.4;
+  margin-bottom: 3px;
+  transition: color 0.15s;
+}
+.trending-row:hover .tr-title { color: var(--fire-bright); }
+.tr-meta { font-size: 10px; color: var(--text-ghost); font-family: var(--ff-mono); }
 
-  /* ── DOSIMETRIST FEATURE ── */
-  .feature-strip {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 24px 24px 0;
-  }
-  .feature-card {
-    background: #0a0400;
-    border: 0.5px solid var(--fire-deep);
-    border-radius: var(--r-lg);
-    padding: 28px;
-    display: flex;
-    gap: 28px;
-    align-items: center;
-  }
-  .feature-left { flex: 1; }
-  .feature-eyebrow {
-    font-size: 10px; color: var(--fire);
-    letter-spacing: 3px; text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .feature-title {
-    font-family: var(--ff-serif);
-    font-size: 26px; font-weight: 700;
-    color: var(--paper);
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
-  .feature-subtitle {
-    font-family: var(--ff-serif);
-    font-size: 14px; font-style: italic;
-    color: var(--text-dim);
-    margin-bottom: 14px;
-  }
-  .feature-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; max-width: 440px; }
-  .feature-btns { display: flex; gap: 10px; margin-top: 18px; }
-  .btn-fire {
-    background: var(--fire); color: #ffe8d0;
-    border: none; border-radius: var(--r-sm);
-    padding: 9px 20px; font-size: 12px; font-weight: 500;
-    letter-spacing: 0.5px; transition: background 0.15s;
-  }
-  .btn-fire:hover { background: var(--fire-deep); }
-  .btn-outline {
-    background: transparent; color: var(--text-muted);
-    border: 0.5px solid var(--border); border-radius: var(--r-sm);
-    padding: 9px 20px; font-size: 12px;
-    transition: all 0.15s;
-  }
-  .btn-outline:hover { border-color: var(--fire); color: var(--fire); }
-  .feature-right { text-align: center; flex-shrink: 0; }
-  .feature-tagline {
-    font-family: var(--ff-serif);
-    font-size: 13px; font-style: italic;
-    color: var(--text-dim);
-    line-height: 1.6;
-    max-width: 200px;
-    border-left: 2px solid var(--fire-deep);
-    padding-left: 14px;
-    text-align: left;
-  }
+/* Hub Grid */
+.hub-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+.hub-tile {
+  background: var(--ink-mid);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm);
+  padding: 12px 10px;
+  cursor: pointer; transition: all 0.15s;
+  text-align: left;
+}
+.hub-tile:hover { border-color: var(--border-hard); }
+.hub-tile.ht-live { border-color: rgba(200,64,26,0.4); background: rgba(200,64,26,0.05); }
+.hub-tile.ht-soon { opacity: 0.6; }
+.ht-icon { font-size: 18px; margin-bottom: 5px; display: block; }
+.ht-name { font-size: 11.5px; font-weight: 500; color: var(--text-mid); margin-bottom: 2px; }
+.ht-live .ht-name { color: var(--text-warm); }
+.ht-status { font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; }
+.ht-live .ht-status { color: var(--fire-bright); }
+.ht-soon .ht-status { color: var(--text-ghost); }
 
-  /* ── FOOTER ── */
-  footer {
-    max-width: 1160px;
-    margin: 28px auto 0;
-    padding: 0 24px 0;
-  }
-  .footer-inner {
-    background: var(--ink-mid);
-    border: 0.5px solid var(--border-soft);
-    border-bottom: none;
-    border-radius: var(--r-lg) var(--r-lg) 0 0;
-    padding: 28px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 28px;
-  }
-  .footer-brand-name {
-    font-family: var(--ff-serif);
-    font-size: 18px; font-weight: 700;
-    color: var(--text-warm);
-    margin-bottom: 6px;
-  }
-  .footer-brand-name span { color: var(--fire); }
-  .footer-brand-desc { font-size: 12px; color: var(--text-dim); line-height: 1.7; max-width: 240px; margin-bottom: 12px; }
-  .footer-col-title {
-    font-size: 10px; font-weight: 500;
-    color: var(--text-dim);
-    letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .footer-links { display: flex; flex-direction: column; gap: 7px; }
-  .footer-links a { font-size: 12px; color: var(--text-ghost); transition: color 0.15s; }
-  .footer-links a:hover { color: var(--fire); }
-  .footer-bottom {
-    max-width: 1160px; margin: 0 auto;
-    padding: 0 24px 32px;
-  }
-  .footer-bottom-inner {
-    background: var(--ink-mid);
-    border: 0.5px solid var(--border-soft);
-    border-top: 0.5px solid var(--border-soft);
-    border-radius: 0 0 var(--r-lg) var(--r-lg);
-    padding: 14px 28px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-verse {
-    font-family: var(--ff-serif);
-    font-size: 12px; font-style: italic;
-    color: var(--text-ghost);
-  }
-  .footer-copy { font-size: 10px; color: var(--text-ghost); letter-spacing: 1px; }
+/* Notify */
+.notify-title { font-size: 13.5px; font-weight: 600; color: var(--text-bright); margin-bottom: 4px; }
+.notify-sub { font-size: 11.5px; color: var(--text-dim); line-height: 1.55; margin-bottom: 14px; }
+.notify-select, .notify-input {
+  width: 100%;
+  background: var(--ink-mid); border: 1px solid var(--border-hard);
+  border-radius: var(--r-sm); padding: 9px 12px;
+  font-size: 12px; color: var(--text-warm); font-family: var(--ff-sans);
+  outline: none; transition: border-color 0.15s; margin-bottom: 8px;
+}
+.notify-select:focus, .notify-input:focus { border-color: var(--fire); }
+.notify-input::placeholder { color: var(--text-ghost); }
+.notify-btn {
+  width: 100%; background: var(--fire); border: none; border-radius: var(--r-sm);
+  padding: 10px; font-size: 12.5px; color: #fff; font-weight: 500;
+  letter-spacing: 0.3px; cursor: pointer; transition: background 0.15s;
+  box-shadow: 0 2px 10px rgba(200,64,26,0.3);
+}
+.notify-btn:hover { background: var(--fire-bright); }
+.toast {
+  background: var(--ink-raised); border-left: 2px solid var(--fire);
+  border-radius: 0 var(--r-xs) var(--r-xs) 0; padding: 10px 12px;
+  font-size: 11px; color: var(--gold-light); line-height: 1.5;
+  display: none; margin-top: 8px;
+}
+.toast.show { display: block; }
 
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.75);
-    z-index: 200;
-    align-items: center; justify-content: center;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--ink-soft);
-    border: 0.5px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 28px;
-    width: 100%; max-width: 420px;
-    margin: 0 24px;
-  }
-  .modal-title {
-    font-family: var(--ff-serif);
-    font-size: 20px; font-weight: 700;
-    color: var(--paper); margin-bottom: 4px;
-  }
-  .modal-sub { font-size: 12px; color: var(--text-dim); margin-bottom: 20px; line-height: 1.6; }
-  .modal-close {
-    float: right; margin-top: -4px;
-    background: none; border: none;
-    font-size: 18px; color: var(--text-ghost);
-    cursor: pointer;
-  }
-  .modal-close:hover { color: var(--fire); }
+/* ── ABOUT ── */
+.about-wrap {
+  max-width: 1200px; margin: 0 auto; padding: 0 32px;
+}
+.about-inner {
+  background: var(--ink-card);
+  border: 1px solid var(--border-hard);
+  border-radius: var(--r-xl);
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  box-shadow: var(--shadow-sm);
+}
+.ab-label {
+  font-size: 9.5px; font-weight: 600; color: var(--fire);
+  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 8px;
+}
+.ab-text { font-size: 12.5px; color: var(--text-mid); line-height: 1.75; }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-    .feature-card { flex-direction: column; }
-    .about-inner { grid-template-columns: 1fr; gap: 16px; }
-    .nav-links { display: none; }
-  }
-  @media (max-width: 600px) {
-    .footer-inner { grid-template-columns: 1fr; }
-    .hero { flex-direction: column; }
-    .hero-visual { width: 100%; height: 100px; border-left: none; border-top: 0.5px solid var(--border); }
-    .footer-bottom-inner { flex-direction: column; gap: 6px; text-align: center; }
-  }
+/* ── FOOTER ── */
+.footer-wrap { max-width: 1200px; margin: 40px auto 0; padding: 0 32px; }
+.footer-top {
+  background: var(--ink-mid);
+  border: 1px solid var(--border-soft);
+  border-bottom: none;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+.footer-brand-name {
+  font-family: var(--ff-serif); font-size: 20px; font-weight: 700;
+  color: var(--text-bright); margin-bottom: 8px;
+}
+.footer-brand-name span { color: var(--fire-bright); }
+.footer-brand-desc { font-size: 12px; color: var(--text-dim); line-height: 1.75; max-width: 260px; margin-bottom: 16px; }
+.footer-col-title {
+  font-size: 9.5px; font-weight: 600; color: var(--text-dim);
+  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 9px; }
+.footer-links a { font-size: 12px; color: var(--text-ghost); transition: color 0.15s; }
+.footer-links a:hover { color: var(--fire-bright); }
+.footer-bottom-bar {
+  background: var(--ink-mid);
+  border: 1px solid var(--border-soft);
+  border-top: 1px solid var(--border-soft);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-verse {
+  font-family: var(--ff-serif); font-size: 12px; font-style: italic; color: var(--text-ghost);
+}
+.footer-copy { font-size: 10px; color: var(--text-ghost); letter-spacing: 1px; font-family: var(--ff-mono); }
+.footer-pad { padding-bottom: 32px; background: var(--ink-mid); max-width: 1200px; margin: 0 auto; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-text { animation: none; }
-  }
+/* ── MODAL ── */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);
+  z-index: 200; align-items: center; justify-content: center;
+}
+.overlay.open { display: flex; }
+.modal {
+  background: var(--ink-card);
+  border: 1px solid var(--border-hard);
+  border-radius: var(--r-xl); padding: 32px;
+  width: 100%; max-width: 440px; margin: 0 24px;
+  box-shadow: var(--shadow-lg);
+}
+.modal-title { font-family: var(--ff-serif); font-size: 22px; font-weight: 700; color: var(--paper); margin-bottom: 5px; }
+.modal-sub { font-size: 12px; color: var(--text-dim); margin-bottom: 22px; line-height: 1.6; }
+.modal-close { float: right; font-size: 18px; color: var(--text-ghost); cursor: pointer; margin-top: -3px; }
+.modal-close:hover { color: var(--fire); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 20px; }
+  .nav-links { display: none; }
+  .story-inner { grid-template-columns: 1fr; }
+  .story-aside { display: none; }
+  .platform-intro { gap: 20px; flex-wrap: wrap; }
+}
+@media (max-width: 640px) {
+  .topbar, .navbar, .hub-bar, .ticker { padding-left: 16px; padding-right: 16px; }
+  .page-wrap, .story-section, .about-wrap, .footer-wrap { padding-left: 16px; padding-right: 16px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-top, .footer-bottom-bar { padding: 24px; }
+  .story-body { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .ticker-inner, .live-dot { animation: none; } }
 </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <span>Monday, June 9, 2026 &nbsp;·&nbsp; Burning Point USA</span>
+  <span class="topbar-date">Monday, June 9, 2026 &nbsp;·&nbsp; Burning Point USA</span>
   <div class="topbar-right">
     <a href="#">Subscribe</a>
     <a href="#">Newsletter</a>
@@ -639,15 +716,15 @@
 </div>
 
 <!-- NAVBAR -->
-<nav class="navbar" role="navigation" aria-label="Main navigation">
+<nav class="navbar" role="navigation" aria-label="Main">
   <div class="brand">
-    <div class="brand-icon" aria-hidden="true">🔥</div>
-    <div>
+    <div class="brand-mark" aria-hidden="true">🔥</div>
+    <div class="brand-text">
       <div class="brand-name">Burning Point <span>USA</span></div>
-      <div class="brand-tagline">By us. For us. On fire.</div>
+      <div class="brand-sub">Civic Intelligence Platform</div>
     </div>
   </div>
-  <div class="nav-links" role="list">
+  <div class="nav-links">
     <button class="nav-link active" onclick="setActive(this)">Home</button>
     <button class="nav-link" onclick="setActive(this)">Library</button>
     <button class="nav-link" onclick="setActive(this)">The Forge</button>
@@ -656,106 +733,66 @@
     <button class="nav-link" onclick="setActive(this)">About</button>
   </div>
   <div class="nav-right">
-    <div class="search-box" role="search">
+    <div class="search-wrap">
       <span class="search-icon" aria-hidden="true">🔍</span>
-      <input type="search" placeholder="Search Burning Point..." aria-label="Search" />
+      <input type="search" placeholder="Search Burning Point…" aria-label="Search" />
     </div>
-    <div class="avatar" aria-label="Account">BP</div>
+    <div class="avatar-btn" aria-label="Account">BP</div>
   </div>
 </nav>
 
 <!-- HUB BAR -->
-<div class="hub-bar" role="navigation" aria-label="City hubs">
-  <div class="hub-pill live" aria-label="Phoenix Fire — live">
-    <span class="hub-icon" aria-hidden="true">🔥</span>
-    <span>Phoenix Fire</span>
-    <span class="hub-badge">Live</span>
+<div class="hub-bar" aria-label="City hubs">
+  <div class="hub-chip live">
+    <span class="live-dot"></span>
+    Phoenix Fire
+    <span class="chip-badge">Live</span>
   </div>
-  <button class="hub-pill soon" onclick="openNotify('New York Ignite')" aria-label="New York Ignite — coming soon">
-    <span class="hub-icon" aria-hidden="true">🗽</span>
-    <span>New York Ignite</span>
-    <span class="hub-badge">Coming soon</span>
-  </button>
-  <button class="hub-pill soon" onclick="openNotify('Atlanta Blaze')" aria-label="Atlanta Blaze — coming soon">
-    <span class="hub-icon" aria-hidden="true">🍑</span>
-    <span>Atlanta Blaze</span>
-    <span class="hub-badge">Coming soon</span>
-  </button>
-  <button class="hub-pill soon" onclick="openNotify('Memphis Ember')" aria-label="Memphis Ember — coming soon">
-    <span class="hub-icon" aria-hidden="true">🎵</span>
-    <span>Memphis Ember</span>
-    <span class="hub-badge">Coming soon</span>
-  </button>
-  <button class="hub-pill soon" onclick="openNotify('Detroit Spark')" aria-label="Detroit Spark — coming soon">
-    <span class="hub-icon" aria-hidden="true">⚙️</span>
-    <span>Detroit Spark</span>
-    <span class="hub-badge">Coming soon</span>
-  </button>
-  <button class="hub-pill soon" onclick="openNotify('Cincinnati Rising')" aria-label="Cincinnati Rising — coming soon">
-    <span class="hub-icon" aria-hidden="true">🌉</span>
-    <span>Cincinnati Rising</span>
-    <span class="hub-badge">Coming soon</span>
-  </button>
-  <button class="hub-pill soon" onclick="openNotify('LA / Oakland West Fire')" aria-label="LA Oakland West Fire — coming soon">
-    <span class="hub-icon" aria-hidden="true">🌅</span>
-    <span>LA / Oakland West Fire</span>
-    <span class="hub-badge">Coming soon</span>
-  </button>
+  <button class="hub-chip soon" onclick="openNotify('New York Ignite')">🗽 New York Ignite <span class="chip-badge">Soon</span></button>
+  <button class="hub-chip soon" onclick="openNotify('Atlanta Blaze')">🍑 Atlanta Blaze <span class="chip-badge">Soon</span></button>
+  <button class="hub-chip soon" onclick="openNotify('Memphis Ember')">🎵 Memphis Ember <span class="chip-badge">Soon</span></button>
+  <button class="hub-chip soon" onclick="openNotify('Detroit Spark')">⚙️ Detroit Spark <span class="chip-badge">Soon</span></button>
+  <button class="hub-chip soon" onclick="openNotify('Cincinnati Rising')">🌉 Cincinnati Rising <span class="chip-badge">Soon</span></button>
+  <button class="hub-chip soon" onclick="openNotify('LA / Oakland West Fire')">🌅 LA / Oakland <span class="chip-badge">Soon</span></button>
 </div>
 
 <!-- TICKER -->
-<div class="ticker" aria-live="polite" aria-label="Breaking news ticker">
-  <span class="ticker-tag">Breaking</span>
+<div class="ticker" aria-live="polite">
+  <span class="ticker-label">Breaking</span>
   <div class="ticker-track">
-    <span class="ticker-text">
-      Phoenix Fire: Elijah's Fire investigation gains national attention &nbsp;·&nbsp;
-      The Dosimetrist: Witness of Fire — trailer dropping soon &nbsp;·&nbsp;
-      Anti-Baal Law: Arizona lawmakers respond to Ponderer investigation &nbsp;·&nbsp;
-      Burning Point USA expanding to 7 city hubs in 2026 &nbsp;·&nbsp;
-      Culture: Black-owned media sees historic growth nationally &nbsp;·&nbsp;
-      Phoenix Fire: Jay Electronica story reverberates across the country &nbsp;·&nbsp;
-      The Bird Problem — Leviticus, the Phoenix, and what the signs said
+    <span class="ticker-inner">
+      Phoenix Fire: Elijah's Fire investigation continues to gain national attention &nbsp;·&nbsp;
+      Burning Point expanding to 7 city hubs in 2026 &nbsp;·&nbsp;
+      The Forge: New claim verification tools launching this quarter &nbsp;·&nbsp;
+      Anti-Baal Law framework: Arizona legal experts respond &nbsp;·&nbsp;
+      Black-owned media sees historic growth nationally &nbsp;·&nbsp;
+      The Firekeeper AI — civic intelligence mentorship now in development
     </span>
   </div>
 </div>
 
-<!-- DOSIMETRIST FEATURE -->
-<div class="feature-strip">
-  <div class="feature-card">
-    <div class="feature-left">
-      <div class="feature-eyebrow">Phoenix Fire · Featured Story</div>
-      <div class="feature-title">The Dosimetrist</div>
-      <div class="feature-subtitle">Witness of Fire</div>
-      <div class="feature-desc">
-        A story of science. A betrayal of blood. A truth written in fire.
-        The Voss family saw Alijah long before he saw them.
-        His genetics, rare. His lineage, ancient. His destiny — theirs to steal.
-        They built the chamber. They chose the date. They thought they controlled the fire.
-        They were wrong.
-      </div>
-      <div class="feature-btns">
-        <button class="btn-fire">Read the full story</button>
-        <button class="btn-outline">Watch trailer</button>
-      </div>
-    </div>
-    <div class="feature-right">
-      <div class="feature-tagline">
-        "They created a monster.<br/>God created a witness.<br/><br/>Alijah rises."
-      </div>
-    </div>
+<!-- PLATFORM INTRO -->
+<div class="platform-intro">
+  <div class="pi-stat"><div class="pi-stat-num">5</div><div class="pi-stat-label">Core Systems</div></div>
+  <div class="pi-divider"></div>
+  <div class="pi-stat"><div class="pi-stat-num">7</div><div class="pi-stat-label">City Hubs</div></div>
+  <div class="pi-divider"></div>
+  <div class="pi-stat"><div class="pi-stat-num">∞</div><div class="pi-stat-label">Questions Asked</div></div>
+  <div class="pi-divider"></div>
+  <div class="pi-mission">
+    <strong>Burning Point</strong> is an AI-powered civic intelligence platform — built to develop critical thinkers, capable leaders, and informed communities. <em>Think. Challenge. Build.</em>
   </div>
+  <a href="#" class="pi-cta">Explore the Platform →</a>
 </div>
 
-<!-- MAIN LAYOUT -->
-<div class="layout">
+<!-- MAIN CONTENT -->
+<div class="page-wrap">
   <main>
 
     <!-- HERO -->
     <div class="hero">
-      <div class="hero-content">
-        <div class="hero-tag">
-          <span aria-hidden="true">🔥</span> Phoenix Fire · Investigation
-        </div>
+      <div class="hero-body">
+        <div class="hero-eyebrow">🔥 Phoenix Fire · Investigation</div>
         <h1 class="hero-title">Elijah's Fire: Two Tragedies, 33 Years Apart — Arizona's Unanswered Questions</h1>
         <div class="hero-meta">
           <span>The Arizona Ponderer</span>
@@ -764,101 +801,81 @@
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <div class="hero-flame">
-          <div class="flame-icon">🔥</div>
-          <div class="flame-label">Phoenix Fire</div>
+        <div class="flame-glyph">
+          <div class="icon">🔥</div>
+          <div class="label">Phoenix Fire</div>
         </div>
       </div>
     </div>
 
-    <!-- PHOENIX FIRE FEED -->
-    <div class="feed-block">
-      <div class="section-header">
-        <span class="section-title">Phoenix Fire — latest</span>
-        <button class="view-all">View all →</button>
+    <!-- PHOENIX FIRE -->
+    <div class="sec-head">
+      <span class="sec-label">Phoenix Fire — Latest</span>
+      <button class="sec-more">View all →</button>
+    </div>
+    <div class="feed">
+      <div class="article">
+        <div class="art-thumb t-fire">📰</div>
+        <div class="art-body">
+          <div class="art-cat">Investigation · Justice</div>
+          <div class="art-title">Elijah's Fire — the full 33-year timeline, documented</div>
+          <div class="art-meta"><span>2 hr ago</span><span>31.4k views</span></div>
+        </div>
       </div>
-      <div class="card-list">
-        <div class="card">
-          <div class="card-thumb fire"><span aria-hidden="true">📰</span></div>
-          <div class="card-body">
-            <div class="card-cat">Investigation · Justice</div>
-            <div class="card-title">The Dosimetrist: Witness of Fire — the full story behind the graphic spread</div>
-            <div class="card-meta"><span>2 hr ago</span><span>31.4k views</span></div>
-          </div>
+      <div class="article">
+        <div class="art-thumb t-teal">⚖</div>
+        <div class="art-body">
+          <div class="art-cat">Law · Anti-Baal</div>
+          <div class="art-title">What is an Anti-Baal law? Arizona legal experts weigh in on the Ponderer's framework</div>
+          <div class="art-meta"><span>Yesterday</span><span>12.2k views</span></div>
         </div>
-        <div class="card">
-          <div class="card-thumb gold"><span aria-hidden="true">▶</span></div>
-          <div class="card-body">
-            <div class="card-cat">Video · Culture</div>
-            <div class="card-title">Jay Electronica, the missed show, and what the signs said — a visual breakdown</div>
-            <div class="card-meta"><span>5 hr ago</span><span>18.7k views</span></div>
-          </div>
+      </div>
+      <div class="article">
+        <div class="art-thumb t-blue">✦</div>
+        <div class="art-body">
+          <div class="art-cat">Spiritual · Prophecy</div>
+          <div class="art-title">The Bird Problem — Leviticus, the Phoenix, and the two witnesses explained</div>
+          <div class="art-meta"><span>2 days ago</span><span>6.8k likes</span></div>
         </div>
-        <div class="card">
-          <div class="card-thumb teal"><span aria-hidden="true">⚖</span></div>
-          <div class="card-body">
-            <div class="card-cat">Law · Anti-Baal</div>
-            <div class="card-title">What is an Anti-Baal law? Arizona legal experts weigh in on the Ponderer's framework</div>
-            <div class="card-meta"><span>Yesterday</span><span>12.2k views</span></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-thumb blue"><span aria-hidden="true">✦</span></div>
-          <div class="card-body">
-            <div class="card-cat">Spiritual · Prophecy</div>
-            <div class="card-title">The Bird Problem — Leviticus, the Phoenix, and the two witnesses explained</div>
-            <div class="card-meta"><span>2 days ago</span><span>6.8k likes</span></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-thumb fire"><span aria-hidden="true">🎙</span></div>
-          <div class="card-body">
-            <div class="card-cat">Podcast · Burning Point Talks</div>
-            <div class="card-title">Justin Neal on building Black media that doesn't flinch — full conversation</div>
-            <div class="card-meta"><span>3 days ago</span><span>9.1k listens</span></div>
-          </div>
+      </div>
+      <div class="article">
+        <div class="art-thumb t-fire">🎙</div>
+        <div class="art-body">
+          <div class="art-cat">Podcast · Burning Point Talks</div>
+          <div class="art-title">Justin Neal on building Black media that doesn't flinch — full conversation</div>
+          <div class="art-meta"><span>3 days ago</span><span>9.1k listens</span></div>
         </div>
       </div>
     </div>
 
-    <!-- NATIONAL FEED -->
-    <div class="feed-block">
-      <div class="section-header">
-        <span class="section-title">National</span>
-        <button class="view-all">View all →</button>
+    <!-- NATIONAL -->
+    <div class="sec-head">
+      <span class="sec-label">National</span>
+      <button class="sec-more">View all →</button>
+    </div>
+    <div class="feed">
+      <div class="article">
+        <div class="art-thumb t-neutral">📰</div>
+        <div class="art-body">
+          <div class="art-cat">Politics · National</div>
+          <div class="art-title">Black voter turnout reshapes three key Senate races heading into fall</div>
+          <div class="art-meta"><span>1 hr ago</span><span>44.3k views</span></div>
+        </div>
       </div>
-      <div class="card-list">
-        <div class="card">
-          <div class="card-thumb dim"><span aria-hidden="true">📰</span></div>
-          <div class="card-body">
-            <div class="card-cat">Politics · National</div>
-            <div class="card-title">Black voter turnout reshapes three key Senate races heading into fall</div>
-            <div class="card-meta"><span>1 hr ago</span><span>44.3k views</span></div>
-          </div>
+      <div class="article">
+        <div class="art-thumb t-teal">🏦</div>
+        <div class="art-body">
+          <div class="art-cat">Business · Economy</div>
+          <div class="art-title">Black-owned banks report record deposits — what's driving the shift</div>
+          <div class="art-meta"><span>4 hr ago</span><span>27.8k views</span></div>
         </div>
-        <div class="card">
-          <div class="card-thumb teal"><span aria-hidden="true">🏦</span></div>
-          <div class="card-body">
-            <div class="card-cat">Business · Economy</div>
-            <div class="card-title">Black-owned banks report record deposits — what's driving the shift</div>
-            <div class="card-meta"><span>4 hr ago</span><span>27.8k views</span></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-thumb gold"><span aria-hidden="true">🎵</span></div>
-          <div class="card-body">
-            <div class="card-cat">Culture · Music</div>
-            <div class="card-title">How Black independent artists are bypassing major labels in 2026</div>
-            <div class="card-meta"><span>6 hr ago</span><span>19.5k views</span></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-thumb blue"><span aria-hidden="true">⚕</span></div>
-          <div class="card-body">
-            <div class="card-cat">Health · Community</div>
-            <div class="card-title">Maternal mortality in Black communities — advocates demand federal action now</div>
-            <div class="card-meta"><span>8 hr ago</span><span>33.1k views</span></div>
-          </div>
+      </div>
+      <div class="article">
+        <div class="art-thumb t-gold">🎵</div>
+        <div class="art-body">
+          <div class="art-cat">Culture · Music</div>
+          <div class="art-title">How Black independent artists are bypassing major labels in 2026</div>
+          <div class="art-meta"><span>6 hr ago</span><span>19.5k views</span></div>
         </div>
       </div>
     </div>
@@ -868,101 +885,134 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="sidebar-card">
-      <div class="section-header">
-        <span class="section-title">Trending nationally</span>
+    <div class="s-card">
+      <div class="sec-head">
+        <span class="sec-label">Trending</span>
       </div>
-      <div class="trending-item"><span class="ti-num">01</span><div><div class="ti-title">The Dosimetrist trailer — what we know</div><div class="ti-meta">Investigation · 52.1k views</div></div></div>
-      <div class="trending-item"><span class="ti-num">02</span><div><div class="ti-title">Elijah's Fire: the 33-year timeline</div><div class="ti-meta">Phoenix Fire · 38.4k views</div></div></div>
-      <div class="trending-item"><span class="ti-num">03</span><div><div class="ti-title">Anti-Baal law: a framework for Black justice</div><div class="ti-meta">Law · 29.7k views</div></div></div>
-      <div class="trending-item"><span class="ti-num">04</span><div><div class="ti-title">ANNEAL — what Justin Neal's name means</div><div class="ti-meta">Culture · 21.3k views</div></div></div>
-      <div class="trending-item"><span class="ti-num">05</span><div><div class="ti-title">Black media ownership: the next frontier</div><div class="ti-meta">Business · 18.9k views</div></div></div>
+      <div class="trending-row"><span class="tr-num">01</span><div><div class="tr-title">Elijah's Fire: the 33-year timeline</div><div class="tr-meta">Phoenix Fire · 52.1k views</div></div></div>
+      <div class="trending-row"><span class="tr-num">02</span><div><div class="tr-title">Anti-Baal law: a framework explained</div><div class="tr-meta">Law · 38.4k views</div></div></div>
+      <div class="trending-row"><span class="tr-num">03</span><div><div class="tr-title">The Dosimetrist — inspired by Alijah Bradley</div><div class="tr-meta">Stories · 29.7k views</div></div></div>
+      <div class="trending-row"><span class="tr-num">04</span><div><div class="tr-title">ANNEAL — what Justin Neal's name means</div><div class="tr-meta">Culture · 21.3k views</div></div></div>
+      <div class="trending-row"><span class="tr-num">05</span><div><div class="tr-title">Black media ownership: the next frontier</div><div class="tr-meta">Business · 18.9k views</div></div></div>
     </div>
 
-    <div class="sidebar-card">
-      <div class="section-header">
-        <span class="section-title">City hubs</span>
-      </div>
+    <div class="s-card">
+      <div class="sec-head"><span class="sec-label">City Hubs</span></div>
       <div class="hub-grid">
-        <div class="hub-tile live-tile">
-          <span class="hub-tile-icon" aria-hidden="true">🔥</span>
-          <div class="hub-tile-name">Phoenix Fire</div>
-          <div class="hub-tile-status">Live now</div>
+        <div class="hub-tile ht-live">
+          <span class="ht-icon">🔥</span>
+          <div class="ht-name">Phoenix Fire</div>
+          <div class="ht-status" style="color:var(--fire-bright)">Live now</div>
         </div>
-        <button class="hub-tile soon-tile" onclick="openNotify('New York Ignite')">
-          <span class="hub-tile-icon" aria-hidden="true">🗽</span>
-          <div class="hub-tile-name">New York Ignite</div>
-          <div class="hub-tile-status">Coming soon</div>
+        <button class="hub-tile ht-soon" onclick="openNotify('New York Ignite')">
+          <span class="ht-icon">🗽</span>
+          <div class="ht-name">New York</div>
+          <div class="ht-status" style="color:var(--text-ghost)">Coming soon</div>
         </button>
-        <button class="hub-tile soon-tile" onclick="openNotify('Atlanta Blaze')">
-          <span class="hub-tile-icon" aria-hidden="true">🍑</span>
-          <div class="hub-tile-name">Atlanta Blaze</div>
-          <div class="hub-tile-status">Coming soon</div>
+        <button class="hub-tile ht-soon" onclick="openNotify('Atlanta Blaze')">
+          <span class="ht-icon">🍑</span>
+          <div class="ht-name">Atlanta</div>
+          <div class="ht-status" style="color:var(--text-ghost)">Coming soon</div>
         </button>
-        <button class="hub-tile soon-tile" onclick="openNotify('Memphis Ember')">
-          <span class="hub-tile-icon" aria-hidden="true">🎵</span>
-          <div class="hub-tile-name">Memphis Ember</div>
-          <div class="hub-tile-status">Coming soon</div>
+        <button class="hub-tile ht-soon" onclick="openNotify('Memphis Ember')">
+          <span class="ht-icon">🎵</span>
+          <div class="ht-name">Memphis</div>
+          <div class="ht-status" style="color:var(--text-ghost)">Coming soon</div>
         </button>
-        <button class="hub-tile soon-tile" onclick="openNotify('Detroit Spark')">
-          <span class="hub-tile-icon" aria-hidden="true">⚙️</span>
-          <div class="hub-tile-name">Detroit Spark</div>
-          <div class="hub-tile-status">Coming soon</div>
+        <button class="hub-tile ht-soon" onclick="openNotify('Detroit Spark')">
+          <span class="ht-icon">⚙️</span>
+          <div class="ht-name">Detroit</div>
+          <div class="ht-status" style="color:var(--text-ghost)">Coming soon</div>
         </button>
-        <button class="hub-tile soon-tile" onclick="openNotify('LA / Oakland')">
-          <span class="hub-tile-icon" aria-hidden="true">🌅</span>
-          <div class="hub-tile-name">LA / Oakland</div>
-          <div class="hub-tile-status">Coming soon</div>
+        <button class="hub-tile ht-soon" onclick="openNotify('LA / Oakland')">
+          <span class="ht-icon">🌅</span>
+          <div class="ht-name">LA / Oakland</div>
+          <div class="ht-status" style="color:var(--text-ghost)">Coming soon</div>
         </button>
       </div>
     </div>
 
-    <div class="sidebar-card">
-      <div class="notify-form">
-        <div class="notify-title" id="notify-title">Get notified when a hub launches</div>
-        <div class="notify-sub" id="notify-sub">Be first in your city when Burning Point USA arrives.</div>
-        <select class="notify-select" id="notify-city">
-          <option value="">Select your city hub...</option>
-          <option>New York Ignite</option>
-          <option>Atlanta Blaze</option>
-          <option>Memphis Ember</option>
-          <option>Detroit Spark</option>
-          <option>Cincinnati Rising</option>
-          <option>LA / Oakland West Fire</option>
-        </select>
-        <input type="email" class="notify-input" id="notify-email" placeholder="Your email address" />
-        <button class="notify-btn" onclick="submitNotify()">Notify me when it's live</button>
-        <div class="toast" id="notify-toast"></div>
-      </div>
+    <div class="s-card">
+      <div class="notify-title">Get notified when a hub launches</div>
+      <div class="notify-sub">Be first in your city when Burning Point arrives.</div>
+      <select class="notify-select" id="notify-city">
+        <option value="">Select your city…</option>
+        <option>New York Ignite</option>
+        <option>Atlanta Blaze</option>
+        <option>Memphis Ember</option>
+        <option>Detroit Spark</option>
+        <option>Cincinnati Rising</option>
+        <option>LA / Oakland West Fire</option>
+      </select>
+      <input type="email" class="notify-input" id="notify-email" placeholder="Your email address" />
+      <button class="notify-btn" onclick="submitNotify()">Notify me when it's live</button>
+      <div class="toast" id="notify-toast"></div>
     </div>
 
   </aside>
 </div>
 
-<!-- ABOUT STRIP -->
-<div class="about-strip" id="about">
+<!-- THE DOSIMETRIST — STORIES SECTION -->
+<div class="story-section">
+  <div class="sec-head" style="max-width:1136px; margin: 0 auto 16px;">
+    <span class="sec-label">Stories — Inspired by True Events</span>
+  </div>
+  <div class="story-card">
+    <div class="story-inner">
+      <div class="story-body">
+        <div class="story-genre">
+          <span>Original Fiction</span>
+          <span class="story-genre-sep">·</span>
+          <span class="story-inspired">Inspired by the story of Alijah Bradley</span>
+        </div>
+        <div class="story-title">The Dosimetrist</div>
+        <div class="story-subtitle">Witness of Fire</div>
+        <div class="story-desc">
+          A story of science. A betrayal of blood. A truth written in fire.<br/><br/>
+          The Voss family saw Alijah long before he saw them. His genetics, rare. His lineage, ancient. His destiny — theirs to steal. They built the chamber. They chose the date. They thought they controlled the fire.<br/><br/>
+          They were wrong.
+        </div>
+        <div class="story-note">
+          <strong>Author's note:</strong> This is a fictional story. The character of Alijah is inspired by the real story of Alijah Bradley — a young man whose case raises questions this platform intends to keep asking.
+        </div>
+        <div class="story-btns">
+          <button class="btn-primary">Read the story</button>
+          <button class="btn-ghost">Watch trailer</button>
+        </div>
+      </div>
+      <div class="story-aside">
+        <div class="story-pullquote">
+          "They created a monster.<br/>God created a witness.<br/><br/>Alijah rises."
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-wrap" id="about" style="margin-top:32px;">
   <div class="about-inner">
     <div>
-      <div class="about-block-title">What is Burning Point USA?</div>
-      <div class="about-block-text">Burning Point USA is a Black American multimedia news and culture platform — built from the ground up, by us, for us. Investigative journalism, video, podcasts, graphic storytelling, and community voices from Phoenix and across the nation.</div>
+      <div class="ab-label">What is Burning Point USA?</div>
+      <div class="ab-text">An AI-powered civic intelligence platform built to develop critical thinkers, capable leaders, and informed communities — rooted in Phoenix, expanding nationally.</div>
     </div>
     <div>
-      <div class="about-block-title">Phoenix Fire</div>
-      <div class="about-block-text">Our founding hub, rooted in Arizona. Home of The Arizona Ponderer, the Elijah's Fire investigation, and The Dosimetrist: Witness of Fire. The fire started here. It will not be contained.</div>
+      <div class="ab-label">Phoenix Fire</div>
+      <div class="ab-text">Our founding hub. Home of the Elijah's Fire investigation, The Arizona Ponderer, and the stories that started the flame. The fire began here. It will not be contained.</div>
     </div>
     <div>
-      <div class="about-block-title">The mission</div>
-      <div class="about-block-text">Human dignity survives death. Every story we tell, every investigation we run, every voice we platform operates from one principle: human beings are not sacrifices. Human beings are not commodities. Human dignity is sacred.</div>
+      <div class="ab-label">The Mission</div>
+      <div class="ab-text">Human dignity survives death. Every story, every investigation, every voice we platform starts from one truth: human beings are not sacrifices. Human dignity is sacred.</div>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
+<div class="footer-wrap">
+  <div class="footer-top">
     <div>
       <div class="footer-brand-name">Burning Point <span>USA</span></div>
-      <div class="footer-brand-desc">Black American multimedia journalism and culture. By us. For us. On fire. Est. Phoenix, Arizona, 2026.</div>
+      <div class="footer-brand-desc">Civic intelligence for the people. By us. For us. On fire. Est. Phoenix, Arizona, 2026.</div>
     </div>
     <div>
       <div class="footer-col-title">Phoenix Fire</div>
@@ -977,11 +1027,11 @@
     <div>
       <div class="footer-col-title">Platform</div>
       <div class="footer-links">
-        <a href="#">News</a>
-        <a href="#">Investigations</a>
-        <a href="#">Video</a>
-        <a href="#">Podcasts</a>
-        <a href="#">Culture</a>
+        <a href="#">The Library</a>
+        <a href="#">The Forge</a>
+        <a href="#">The Signal</a>
+        <a href="#">The Firekeeper</a>
+        <a href="#">Leadership Path</a>
       </div>
     </div>
     <div>
@@ -989,88 +1039,74 @@
       <div class="footer-links">
         <a href="#">Subscribe</a>
         <a href="#">Newsletter</a>
-        <a href="#">About</a>
+        <a href="#about">About</a>
         <a href="#">Submit a tip</a>
         <a href="#">Contribute</a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-bottom-inner">
-      <div class="footer-verse">"No weapon formed against you shall prosper." — Isaiah 54:17</div>
-      <div class="footer-copy">© 2026 Burning Point USA · Phoenix Fire · All rights reserved</div>
-    </div>
+  <div class="footer-bottom-bar">
+    <div class="footer-verse">"No weapon formed against you shall prosper." — Isaiah 54:17</div>
+    <div class="footer-copy">© 2026 Burning Point USA · All rights reserved</div>
   </div>
-</footer>
+</div>
+<div style="height:1px; background:var(--ink-mid); max-width:1200px; margin:0 auto;"></div>
 
-<!-- NOTIFY MODAL -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<!-- MODAL -->
+<div class="overlay" id="modal" role="dialog" aria-modal="true">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
     <div class="modal-title" id="modal-title">Burning Point USA</div>
     <div class="modal-sub" id="modal-sub">This hub is coming. Drop your email and be first when we light it up.</div>
-    <div class="notify-form">
-      <select class="notify-select" id="modal-city">
-        <option value="">Select your city hub...</option>
-        <option>New York Ignite</option>
-        <option>Atlanta Blaze</option>
-        <option>Memphis Ember</option>
-        <option>Detroit Spark</option>
-        <option>Cincinnati Rising</option>
-        <option>LA / Oakland West Fire</option>
-      </select>
-      <input type="email" class="notify-input" id="modal-email" placeholder="Your email address" />
-      <button class="notify-btn" onclick="submitModal()">Notify me when it's live</button>
-      <div class="toast" id="modal-toast"></div>
-    </div>
+    <select class="notify-select" id="modal-city">
+      <option value="">Select your city…</option>
+      <option>New York Ignite</option>
+      <option>Atlanta Blaze</option>
+      <option>Memphis Ember</option>
+      <option>Detroit Spark</option>
+      <option>Cincinnati Rising</option>
+      <option>LA / Oakland West Fire</option>
+    </select>
+    <input type="email" class="notify-input" id="modal-email" placeholder="Your email address" />
+    <button class="notify-btn" onclick="submitModal()">Notify me when it's live</button>
+    <div class="toast" id="modal-toast"></div>
   </div>
 </div>
 
 <script>
-  function setActive(btn) {
-    document.querySelectorAll('.nav-link').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
+function setActive(btn) {
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function openNotify(city) {
+  const sel = document.getElementById('modal-city');
+  document.getElementById('modal-title').textContent = city + ' is coming.';
+  document.getElementById('modal-sub').textContent = 'Be first when Burning Point USA lights up ' + city.split(' ')[0] + '. Drop your email below.';
+  for (let i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].text.indexOf(city.split(' ')[0]) !== -1) { sel.selectedIndex = i; break; }
   }
-
-  function openNotify(city) {
-    var modal = document.getElementById('modal');
-    var sel = document.getElementById('modal-city');
-    document.getElementById('modal-title').textContent = city + ' is coming.';
-    document.getElementById('modal-sub').textContent = 'Be first when Burning Point USA lights up ' + city.split(' ')[0] + '. Drop your email below.';
-    for (var i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].text.indexOf(city.split(' ')[0]) !== -1) { sel.selectedIndex = i; break; }
-    }
-    document.getElementById('modal-toast').classList.remove('show');
-    document.getElementById('modal-email').value = '';
-    modal.classList.add('open');
-  }
-
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-  }
-
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-
-  function submitModal() {
-    var city = document.getElementById('modal-city').value;
-    var email = document.getElementById('modal-email').value;
-    var toast = document.getElementById('modal-toast');
-    if (!city) { toast.textContent = 'Select a city first.'; toast.classList.add('show'); return; }
-    toast.textContent = "You're on the list. We'll light you up when " + city + " is live.";
-    toast.classList.add('show');
-    document.getElementById('modal-email').value = '';
-  }
-
-  function submitNotify() {
-    var city = document.getElementById('notify-city').value;
-    var toast = document.getElementById('notify-toast');
-    if (!city) { toast.textContent = 'Select a city first.'; toast.classList.add('show'); return; }
-    toast.textContent = "You're on the list for " + city + ". We'll light you up when it goes live.";
-    toast.classList.add('show');
-    document.getElementById('notify-email').value = '';
-  }
+  document.getElementById('modal-toast').classList.remove('show');
+  document.getElementById('modal-email').value = '';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+function submitModal() {
+  const city = document.getElementById('modal-city').value;
+  const toast = document.getElementById('modal-toast');
+  if (!city) { toast.textContent = 'Select a city first.'; toast.classList.add('show'); return; }
+  toast.textContent = "You're on the list. We'll light you up when " + city + " is live.";
+  toast.classList.add('show');
+  document.getElementById('modal-email').value = '';
+}
+function submitNotify() {
+  const city = document.getElementById('notify-city').value;
+  const toast = document.getElementById('notify-toast');
+  if (!city) { toast.textContent = 'Select a city first.'; toast.classList.add('show'); return; }
+  toast.textContent = "You're on the list for " + city + ". We'll light you up when it goes live.";
+  toast.classList.add('show');
+  document.getElementById('notify-email').value = '';
+}
 </script>
 </body>
 </html>
